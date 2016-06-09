@@ -23,7 +23,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewareGroups = [
-        'web' => [
+        'web'      => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -31,7 +31,19 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
         ],
 
-        'api' => [
+        // Common to all frontend routes
+        'frontend' => [
+            'web',
+        ],
+
+        // Common to all backend routes
+        'backend'  => [
+            'web',
+            'auth',
+        ],
+
+        // Common to all API routes
+        'api'      => [
             'throttle:60,1',
         ],
     ];
