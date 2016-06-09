@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.layouts.centered')
 
 <!-- Main Content -->
 @section('content')
