@@ -8,11 +8,15 @@
 Route::group([
     'as'         => 'backend.',
     'middleware' => 'backend',
+    'namespace'  => 'Backend',
+    'prefix'     => 'backend',
 ], function ()
 {
+    $basePath = __DIR__ . '/Routes/Backend';
+
+    require_once($basePath . '/General.php');
 
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +26,14 @@ Route::group([
 Route::group([
     'as'         => 'frontend.',
     'middleware' => 'frontend',
+    'namespace'  => 'Frontend',
 ], function ()
 {
+    $basePath = __DIR__ . '/Routes/Frontend';
 
-    require_once(__DIR__ . 'Routes/Frontend/Home.php');
+    require_once($basePath . '/General.php');
+    require_once($basePath . '/Access.php');
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +43,8 @@ Route::group([
 Route::group([
     'as'         => 'api.',
     'middleware' => 'api',
+    'namespace'  => 'Api',
+    'prefix'     => 'api',
 ], function ()
 {
 });

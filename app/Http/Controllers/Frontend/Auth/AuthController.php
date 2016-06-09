@@ -1,39 +1,26 @@
-<?php
-
-namespace App\Http\Controllers\Auth;
+<?php namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\Access\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
+    /** @var string Where to redirect users after login / registration. */
     protected $redirectTo = '/';
+
+    /** @var string The login form view */
+    protected $loginView = 'frontend.auth.login';
+
+    /** @var string The registration form view */
+    protected $registerView = 'frontend.auth.register';
 
     /**
      * Create a new authentication controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {

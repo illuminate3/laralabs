@@ -2497,8 +2497,8 @@
             "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "./packages/marvinlabs-laralabs-dev",
-                "reference": "8c84ffdc206ceaa70ef866a86b7e9cb8a22fbd88",
+                "url": "packages/marvinlabs-laralabs-dev",
+                "reference": "e2174d1c064f5b0ae2f941e0b679de7e76dd2755",
                 "shasum": null
             },
             "require": {
