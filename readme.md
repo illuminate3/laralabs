@@ -4,7 +4,9 @@ Starter project for Laravel applications
 
 ## Development tools
 
-### Packages
+The Development features do not depend on any other feature in the project.
+
+### Packages to remove
 
 ```
 "doctrine/dbal": "~2.3",
@@ -20,18 +22,19 @@ Some code in the `boot()` method to add the service providers of above packages.
 
 ## Auth
 
-### Packages
+The Auth features do not depend on any other feature in the project.
+
+### Files to remove
 
 ```
-```
-
-### Code to remove
-
-```
-app/Http/Controllers/Frontend/Auth/*
+app/Http/Controllers/Frontend/Auth/**
 app/Http/Routes/Frontend/Auth.php
 app/Models/Auth/User.php
 config/auth.php
+database/factories/Auth/**
+database/seeds/Auth/**
+database/migrations/2016_06_10_000000_create_users_table.php
+database/migrations/2016_06_10_100000_create_password_resets_table.php
 ```
 
 ### Resources to remove

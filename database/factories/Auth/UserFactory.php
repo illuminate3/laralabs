@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Access\User;
+use App\Models\Auth\User;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
