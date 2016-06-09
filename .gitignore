@@ -1,0 +1,14 @@
+# Dependencies from NPM, Composer, etc.
+/vendor
+/node_modules
+
+# App storage
+/public/storage
+
+# Individual files
+Homestead.yaml
+Homestead.json
+.env
+
+# IDE files
+/.idea
