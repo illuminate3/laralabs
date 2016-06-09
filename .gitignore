@@ -5,9 +5,7 @@
 # App storage
 /public/storage
 
-# Individual files
-Homestead.yaml
-Homestead.json
+# Environment file
 .env
 
 # IDE files
@@ -15,3 +13,8 @@ Homestead.json
 
 # Package development
 /packages
+
+# Homestead server
+Homestead.yaml
+Homestead.json
+Vagrantfile
