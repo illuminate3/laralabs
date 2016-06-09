@@ -72,7 +72,7 @@ Route::group([
             'as'   => 'email',
             'uses' => 'PasswordController@sendResetLinkEmail',
         ]);
-        
+
         Route::post('/reset', [
             'as'   => 'change',
             'uses' => 'PasswordController@reset',

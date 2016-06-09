@@ -149,11 +149,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Laralabs Service Providers...
-         */
-        MarvinLabs\Laralabs\Dev\ServiceProvider::class, // Useful when developing
-
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

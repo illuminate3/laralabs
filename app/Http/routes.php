@@ -32,7 +32,7 @@ Route::group([
     $basePath = __DIR__ . '/Routes/Frontend';
 
     require_once($basePath . '/General.php');
-    require_once($basePath . '/Access.php');
+    require_once($basePath . '/Auth.php');
 });
 
 /*

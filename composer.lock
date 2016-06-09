@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16ed0945446ec85209098d02648a3aae",
-    "content-hash": "3b23490855291553c0ea1bc561434985",
+    "hash": "feeb7d8925d995fc0526626ed52c0e5e",
+    "content-hash": "c6f5cdad7d398bd084e0f9491399d05a",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2493,48 +2493,6 @@
             "time": "2016-02-16 22:31:00"
         },
         {
-            "name": "marvinlabs/laralabs-dev",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "packages/marvinlabs-laralabs-dev",
-                "reference": "e2174d1c064f5b0ae2f941e0b679de7e76dd2755",
-                "shasum": null
-            },
-            "require": {
-                "barryvdh/laravel-debugbar": "^2.1",
-                "barryvdh/laravel-ide-helper": "^2.1",
-                "doctrine/dbal": "~2.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MarvinLabs\\Laralabs\\Dev\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vincent Mimoun-Prat",
-                    "email": "contact@vincentprat.info"
-                }
-            ],
-            "description": "Development dependencies for the Laralabs project",
-            "homepage": "https://github.com/marvinlabs/laralabs-dev",
-            "keywords": [
-                "development tools",
-                "laravel",
-                "starter",
-                "template"
-            ],
-            "support": {
-                "issues": "https://github.com/marvinlabs/laralabs-dev/issues",
-                "source": "https://github.com/marvinlabs/laralabs-dev"
-            }
-        },
-        {
             "name": "maximebf/debugbar",
             "version": "v1.11.1",
             "source": {
@@ -3730,9 +3688,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "marvinlabs/laralabs-dev": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -2,17 +2,45 @@
 
 Starter project for Laravel applications
 
-## Configure the starter project
+## Development tools
 
-All those steps are optional
+### Packages
 
-### Enable dev tools
+```
+"doctrine/dbal": "~2.3",
+"barryvdh/laravel-ide-helper": "^2.1",
+"barryvdh/laravel-debugbar": "^2.1",
+```
 
-Adds a set of convenient tools for development
+### Code to remove
 
-1. Add `marvinlabs/laralabs: "^0.1"` to the main composer.json file within the `requireDev` block
-1. In `config/app.php`, uncomment the line `MarvinLabs\Laralabs\Dev\ServiceProvider::class`
+#### `/app/Providers/AppServiceProvider.php`
 
-### Enable user management
+Some code in the `boot()` method to add the service providers of above packages.
 
- 
+## Auth
+
+### Packages
+
+```
+```
+
+### Code to remove
+
+```
+app/Http/Controllers/Frontend/Auth/*
+app/Http/Routes/Frontend/Auth.php
+app/Models/Auth/User.php
+config/auth.php
+```
+
+### Resources to remove
+
+```
+resources/views/emails/auth/*
+resources/views/frontend/auth/*
+```
+
+  
+  
+  
