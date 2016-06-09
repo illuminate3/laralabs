@@ -12,3 +12,6 @@ Homestead.json
 
 # IDE files
 /.idea
+
+# Package development
+/packages
