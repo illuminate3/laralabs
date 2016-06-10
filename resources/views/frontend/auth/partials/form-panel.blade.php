@@ -22,13 +22,12 @@
                 {{-- Footer links --}}
                 @if (isset($footerLinks))
                     <div class="row">
-                        <div class="col-xs-12 text-center">
-                            <ul class="list-unstyled list-inline">
-                                @foreach ($footerLinks as $link)
-                                    <li><a href="{{ $link['url'] }}" class="footer-link">{!! $link['label'] !!}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
+                        @php($colSpan = 12 / count($footerLinks))
+                        @foreach ($footerLinks as $link)
+                            <div class="col-md-{{ $colSpan }} text-center">
+                                <a href="{{ $link['url'] }}" class="footer-link btn btn-link btn-block">{!! $link['label'] !!}</a>
+                            </div>
+                        @endforeach
                     </div>
                 @endif
             </div>
