@@ -10,6 +10,6 @@
             // [ 'url' => route('frontend.auth.register.form'), 'label' => trans('general.action.register') ],
             [ 'url' => route('frontend.auth.reset.form'), 'label' => trans('general.action.lost_password') ],
         ],
-        'panelClasses' => 'col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3',
+        'panelClasses' => 'col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3',
     ])
 @endsection
