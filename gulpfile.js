@@ -7,14 +7,14 @@ elixir(function (mix) {
      */
     // mix
     // .copy(
-    //     'node_modules/font-awesome/fonts',
+    //     'bower_components/font-awesome/fonts',
     //     'public/build/fonts/font-awesome')
     // .copy(
-    //     'node_modules/bootstrap-sass/assets/fonts/bootstrap',
-    //     'public/build/fonts/bootstrap')
-    // .copy(
-    //     'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-    //     'public/js/vendor/bootstrap');
+    //     'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+    //     'public/js/vendor/bootstrap')
+    //     .copy(
+    //         'bower_components/bootstrap-sass/assets/fonts/bootstrap',
+    //         'public/build/fonts/bootstrap');
 
     /**
      * Process frontend SCSS stylesheets
@@ -48,6 +48,18 @@ elixir(function (mix) {
      * Combine frontend scripts
      */
     mix.scripts([
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js',
+            '../../../bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js',
             'frontend/app.js'
         ],
         'public/js/frontend/app.js');
