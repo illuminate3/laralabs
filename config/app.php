@@ -99,8 +99,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
-
+    'key'    => env('APP_KEY'),
     'cipher' => 'AES-256-CBC',
 
     /*
@@ -221,9 +220,9 @@ return [
         /*
          * Third party aliases...
          */
-        'Html'        => Collective\Html\HtmlFacade::class,
-        'Form'        => Collective\Html\FormFacade::class,
-        'BootForm'    => AdamWathan\BootForms\Facades\BootForm::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'BootForm'  => AdamWathan\BootForms\Facades\BootForm::class,
 
         /*
          * Application aliases...
