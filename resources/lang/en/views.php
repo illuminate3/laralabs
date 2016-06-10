@@ -2,6 +2,6 @@
 
 return [
     'auth' => [
-        'logo-alt' => 'Company Logo',
+        'logo_alt' => 'Company Logo',
     ],
 ];

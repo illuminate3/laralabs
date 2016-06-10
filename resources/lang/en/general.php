@@ -5,12 +5,14 @@ return [
     'action' => [
         'login'         => 'Login',
         'register'      => 'Register',
-        'lost-password' => 'Forgot password',
+        'lost_password' => 'Forgot password',
     ],
 
     'field' => [
-        'email'       => 'Email',
-        'password'    => 'Password',
-        'remember-me' => 'Stay logged in',
+        'name'                  => 'Name',
+        'password_confirmation' => 'Confirm password',
+        'email'                 => 'Email',
+        'password'              => 'Password',
+        'remember_me'           => 'Stay logged in',
     ],
 ];
