@@ -149,6 +149,12 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Third party Service Providers...
+         */
+        Collective\Html\HtmlServiceProvider::class,
+        AdamWathan\BootForms\BootFormsServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -170,7 +176,9 @@ return [
     */
 
     'aliases' => [
-
+        /*
+         * Laravel Framework aliases...
+         */
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,
@@ -202,6 +210,16 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Third party aliases...
+         */
+        'Html'        => Collective\Html\HtmlFacade::class,
+        'Form'        => Collective\Html\FormFacade::class,
+        'BootForm'    => AdamWathan\BootForms\Facades\BootForm::class,
+
+        /*
+         * Application aliases...
+         */
     ],
 
 ];
