@@ -8,10 +8,10 @@ class PasswordController extends Controller
     use ResetsPasswords;
 
     /** @var string The registration form view */
-    protected $linkRequestView = 'frontend.auth.passwords.email';
+    protected $linkRequestView = 'frontend.auth.forgot-password';
 
     /** @var string The registration form view */
-    protected $resetView = 'frontend.auth.passwords.reset';
+    protected $resetView = 'frontend.auth.reset-password';
 
 
     /**

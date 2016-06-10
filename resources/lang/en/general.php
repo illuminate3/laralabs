@@ -3,9 +3,11 @@
 return [
 
     'action' => [
-        'login'         => 'Login',
-        'register'      => 'Register',
-        'lost_password' => 'Forgot password',
+        'login'                  => 'Login',
+        'register'               => 'Register',
+        'lost_password'          => 'Forgot password',
+        'request_password_reset' => 'Request password reset',
+        'do_password_reset'      => 'Reset password',
     ],
 
     'field' => [

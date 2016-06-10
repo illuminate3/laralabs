@@ -2,7 +2,7 @@
         ->action(route('frontend.auth.login.submit'))
         ->post() !!}
 
-{!! BootForm::text(trans('general.field.email'), 'email')  !!}
+{!! BootForm::email(trans('general.field.email'), 'email')  !!}
 {!! BootForm::password(trans('general.field.password'), 'password')  !!}
 {!! BootForm::checkbox(trans('general.field.remember_me'), 'remember_me')  !!}
 

@@ -7,7 +7,7 @@
         {!! BootForm::text(trans('general.field.name'), 'name')  !!}
     </div>
     <div class="col-md-6">
-        {!! BootForm::text(trans('general.field.email'), 'email')  !!}
+        {!! BootForm::email(trans('general.field.email'), 'email')  !!}
     </div>
 </div>
 <div class="row">
