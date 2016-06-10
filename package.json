@@ -5,8 +5,16 @@
         "dev" : "gulp watch"
     },
     "devDependencies" : {
+        "bower": "^1.7.7",
         "gulp" : "^3.9.1",
         "laravel-elixir" : "^5.0.0",
-        "bootstrap-sass" : "^3.0.0"
+        "gulp-shell": "^0.5.2",
+        "shipit-bower": "^0.2.0",
+        "shipit-captain": "^0.4.3",
+        "shipit-cli": "^1.4.0",
+        "shipit-composer": "^0.0.5",
+        "shipit-deploy": "^2.1.2",
+        "shipit-npm": "^0.2.0",
+        "shipit-shared": "^4.4.0"
     }
 }

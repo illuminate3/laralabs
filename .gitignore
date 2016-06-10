@@ -1,12 +1,14 @@
 # Dependencies from NPM, Composer, etc.
 /vendor
 /node_modules
+/bower_components
 
 # App storage
 /public/storage
 
-# Environment file
+# Environment & configuration files
 .env
+deploy.json
 
 # IDE files
 /.idea
