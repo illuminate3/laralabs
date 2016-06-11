@@ -3,7 +3,8 @@
 return [
 
     'auth' => [
-        'logo_alt' => 'Company Logo',
+        'logo_alt' => 'Company logo',
+        'avatar'   => 'User image',
     ],
 
     'backend' => [

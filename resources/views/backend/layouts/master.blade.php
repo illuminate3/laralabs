@@ -28,8 +28,8 @@
 <!-- Page wrapper -->
 <div class="wrapper">
 
-    @include('backend.layouts.partials.master.primary-header')
-    @include('backend.layouts.partials.master.primary-sidebar')
+    @include('backend.layouts.partials.master.header')
+    @include('backend.layouts.partials.master.navigation')
 
     <!-- Content Wrapper -->
     <div class="content-wrapper">
@@ -54,7 +54,7 @@
         </section>
     </div>
 
-    @include('backend.layouts.partials.master.primary-footer')
+    @include('backend.layouts.partials.master.footer')
 </div>
 
 <!-- Scripts -->
