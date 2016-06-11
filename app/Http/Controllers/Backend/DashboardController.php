@@ -21,7 +21,7 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        return view('frontend.home.index');
+        return view('backend.dashboard.index');
     }
 
 }

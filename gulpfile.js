@@ -92,7 +92,7 @@ elixir(function (mix) {
             'resources/assets/css/tmp/backend/app-sass.css')
         .styles([
                 // Admin LTE + bundled Bootstrap
-                '../../../bower_components/admin-lte/bootstrap',
+                '../../../bower_components/admin-lte/bootstrap/css/bootstrap.css',
                 '../../../bower_components/admin-lte/dist/css/AdminLTE.css',
                 '../../../bower_components/admin-lte/dist/css/skins/skin-black-light.css',
 
@@ -102,6 +102,9 @@ elixir(function (mix) {
             'public/assets/css/backend/app.css')
         .scripts([
                 // Admin LTE + bundled Bootstrap
+                '../../../bower_components/admin-lte/plugins/jQuery/jQuery-2.2.0.min.js',
+                '../../../bower_components/admin-lte/bootstrap/js/bootstrap.js',
+                '../../../bower_components/admin-lte/dist/js/app.js',
 
                 // App
                 'backend/app.js'
