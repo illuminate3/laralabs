@@ -30,16 +30,9 @@ elixir(function (mix) {
      | Copy required files from vendor directories to public
      |--------------------------------------------------------------------------
      */
-    // mix
-    // .copy(
-    //     'bower_components/font-awesome/fonts',
-    //     'public/build/fonts/font-awesome')
-    // .copy(
-    //     'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-    //     'public/js/vendor/bootstrap')
-    //     .copy(
-    //         'bower_components/bootstrap-sass/assets/fonts/bootstrap',
-    //         'public/build/fonts/bootstrap');
+    mix.copy(
+        'bower_components/components-font-awesome/fonts',
+        'public/assets/fonts/font-awesome');
 
     /*
      |--------------------------------------------------------------------------
