@@ -17,4 +17,10 @@ return [
         'password'              => 'Password',
         'remember_me'           => 'Stay logged in',
     ],
+
+    'copyright' => [
+        'credits' => 'Copyright &copy; :year <a href=":url">:name</a>.',
+        'notice'  => 'All rights reserved',
+        'version' => 'Version :v',
+    ],
 ];
