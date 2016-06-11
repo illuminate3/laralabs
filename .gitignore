@@ -3,6 +3,10 @@
 /node_modules
 /bower_components
 
+# Temporary or built assets
+/resources/assets/tmp
+/public/build
+
 # App storage
 /public/storage
 

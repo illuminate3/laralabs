@@ -6,7 +6,7 @@
                     <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
                         {{-- Company logo --}}
                         <div class="auth-logo">
-                            <a href="{{ route('frontend.home') }}"><img src="{{ url('/img/auth/logo.png') }}" alt="{{ trans('views.auth.logo_alt') }}" class="img-responsive center-block"></a>
+                            <a href="{{ route('frontend.home') }}"><img src="{{ url('/assets/img/auth/logo.png') }}" alt="{{ trans('views.auth.logo_alt') }}" class="img-responsive center-block"></a>
                         </div>
                     </div>
                 </div>

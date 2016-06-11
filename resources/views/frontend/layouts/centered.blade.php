@@ -14,7 +14,7 @@
 
     <!-- Styles -->
     @yield('head.styles.before', '')
-    <link href="{{ elixir('css/frontend/app.css') }}" rel="stylesheet">
+    <link href="{{ elixir('assets/css/frontend/app.css') }}" rel="stylesheet">
     @yield('head.styles.after', '')
 </head>
 <body>
@@ -28,7 +28,7 @@
 
 <!-- Scripts -->
 @yield('foot.scripts.before', '')
-<script src="{{ elixir('js/frontend/app.js') }}"></script>
+<script src="{{ elixir('assets/js/frontend/app.js') }}"></script>
 @yield('foot.scripts.after', '')
 
 </body>

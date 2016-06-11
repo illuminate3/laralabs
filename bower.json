@@ -15,7 +15,10 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-
+  "dependencies": {},
+  "devDependencies": {
+    "admin-lte": "^2.3.3",
+    "bootswatch": "^3.3.6",
+    "bootstrap-sass": "^3.3.6"
   }
 }
