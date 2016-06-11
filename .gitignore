@@ -6,6 +6,7 @@
 # Temporary or built assets
 /resources/assets/tmp
 /public/build
+/public/assets/fonts/font-awesome
 
 # App storage
 /public/storage
