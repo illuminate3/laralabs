@@ -160,6 +160,7 @@ return [
          */
         Collective\Html\HtmlServiceProvider::class,
         AdamWathan\BootForms\BootFormsServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -223,6 +224,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Form'      => Collective\Html\FormFacade::class,
         'BootForm'  => AdamWathan\BootForms\Facades\BootForm::class,
+        'Menu'      => Lavary\Menu\Facade::class,
 
         /*
          * Application aliases...

@@ -13,3 +13,11 @@ Quick way to write forms with Bootstrap markup
 "adamwathan/bootforms" : "^0.8.0"
 ```
 
+### Menus
+
+```
+"lavary/laravel-menu": "^1.6"
+```
+
+Menus are defined within view composers. For example, the backend menu is defined in the 
+`App\ViewComposers\Backend\NavigationMenuComposer` class.
