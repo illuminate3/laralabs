@@ -23,7 +23,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-black-light sidebar-mini">
+{{-- If you change the skin color, change it in gulp too! --}}
+<body class="hold-transition skin-green sidebar-mini">
 
 <!-- Page wrapper -->
 <div class="wrapper">
