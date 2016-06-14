@@ -158,9 +158,14 @@ return [
         /*
          * Third party Service Providers...
          */
+
+        /* View-related */
         Collective\Html\HtmlServiceProvider::class,
         AdamWathan\BootForms\BootFormsServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
+
+        /* Authentication-related */
+        Jrean\UserVerification\UserVerificationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -221,10 +226,15 @@ return [
         /*
          * Third party aliases...
          */
+
+        /* View-related */
         'Html'      => Collective\Html\HtmlFacade::class,
         'Form'      => Collective\Html\FormFacade::class,
         'BootForm'  => AdamWathan\BootForms\Facades\BootForm::class,
         'Menu'      => Lavary\Menu\Facade::class,
+
+        /* Authentication-related */
+        'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class
 
         /*
          * Application aliases...

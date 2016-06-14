@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0e48d8679f796ad84d32edbf88198ec5",
-    "content-hash": "ef2723a5993793c37f059bc82140b2f5",
+    "hash": "c70f081983271a18e61d156d061a8142",
+    "content-hash": "b322ad3a1d61c2ddceb2bc765947adbd",
     "packages": [
         {
             "name": "adamwathan/bootforms",
@@ -389,6 +389,52 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "jrean/laravel-user-verification",
+            "version": "v2.2.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jrean/laravel-user-verification.git",
+                "reference": "54b81cd7f64b537b87e9b029b4a7c3da1e7e0c19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jrean/laravel-user-verification/zipball/54b81cd7f64b537b87e9b029b4a7c3da1e7e0c19",
+                "reference": "54b81cd7f64b537b87e9b029b4a7c3da1e7e0c19",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.*|5.1.*|5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.7.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jrean\\UserVerification\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jean Ragouin",
+                    "email": "go@askjong.com"
+                }
+            ],
+            "description": "User Email Verification For Laravel 5.*",
+            "keywords": [
+                "email verification",
+                "framework",
+                "laravel",
+                "user verification"
+            ],
+            "time": "2016-06-10 00:36:58"
         },
         {
             "name": "laravel/framework",

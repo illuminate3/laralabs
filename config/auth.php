@@ -104,4 +104,18 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | User account verification
+    |--------------------------------------------------------------------------
+    |
+    | Configure how verification should behave
+    |
+    */
+
+    'verification' => [
+        'enabled'                => true,
+        'allow_unverified_login' => false,
+    ],
+
 ];

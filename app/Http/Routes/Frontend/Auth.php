@@ -79,4 +79,25 @@ Route::group([
         ]);
     });
 
+    /*
+    |--------------------------------------------------------------------------
+    | Account verification
+    |--------------------------------------------------------------------------
+    */
+    Route::group([
+        'prefix' => 'verification',
+        'as'     => 'verification.',
+    ], function ()
+    {
+        Route::get('/{token}', [
+            'as'   => 'form',
+            'uses' => 'AuthController@getVerification',
+        ]);
+
+        Route::get('/error', [
+            'as'   => 'error',
+            'uses' => 'AuthController@getVerificationError',
+        ]);
+    });
+
 });

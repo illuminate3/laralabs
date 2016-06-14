@@ -1,14 +1,15 @@
 <?php namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\Auth\Traits\AuthenticatesAndRegistersUsers;
+use App\Http\Controllers\Frontend\Auth\Traits\VerifiesUsers;
 use App\Models\Auth\User;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
 
 class AuthController extends Controller
 {
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins, VerifiesUsers;
 
     /** @var string Where to redirect users after login / registration. */
     protected $redirectTo = '/';
@@ -18,6 +19,9 @@ class AuthController extends Controller
 
     /** @var string The registration form view */
     protected $registerView = 'frontend.auth.register';
+
+    /** @var string The verification error view */
+    protected $verificationErrorView = 'frontend.auth.verification-error';
 
     /**
      * Create a new authentication controller instance.

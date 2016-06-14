@@ -24,5 +24,14 @@ resources/views/emails/auth/*
 resources/views/frontend/auth/*
 ```
 
+### Dependencies
   
+#### Permissions/roles
+
+  
+#### User verification 
+  
+```
+"jrean/laravel-user-verification": "^2.2"
+```
   
