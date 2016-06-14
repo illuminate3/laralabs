@@ -33,12 +33,16 @@ class Kernel extends HttpKernel
 
         // Common to all frontend routes
         'frontend' => [
-            'web',
+            // Since 5.2.27, the 'web' middleware is applied to all route
+            // See also: https://github.com/laravel/framework/issues/13000
+            // 'web',
         ],
 
         // Common to all backend routes
         'backend'  => [
-            'web',
+            // Since 5.2.27, the 'web' middleware is applied to all route
+            // See also: https://github.com/laravel/framework/issues/13000
+            // 'web',
             'auth',
         ],
 
