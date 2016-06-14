@@ -1,16 +1,16 @@
-<?php namespace App\ViewComposers\Backend;
+<?php namespace App\ViewComposers\Backend\Menus;
 
 use Illuminate\View\View;
 use Lavary\Menu\Builder;
 use Menu;
 
 /**
- * Class NavigationMenuComposer
- * @package App\ViewComposers\Backend
+ * Class MainNavigationComposer
+ * @package App\ViewComposers\Backend\Menus
  *
  * Build the navigation menu when the corresponding view needs to be rendered
  */
-class NavigationMenuComposer
+class MainNavigationComposer
 {
     /**
      * Bind data to the view.

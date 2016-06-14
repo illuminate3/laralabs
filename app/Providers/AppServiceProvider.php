@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         // Register view composers
         view()->composer(
             ['backend.layouts.partials.navigation.menu'],
-            \App\ViewComposers\Backend\NavigationMenuComposer::class
+            \App\ViewComposers\Backend\Menus\MainNavigationComposer::class
         );
     }
 
