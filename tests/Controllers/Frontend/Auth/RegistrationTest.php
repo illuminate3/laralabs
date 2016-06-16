@@ -136,7 +136,7 @@ class RegistrationTest extends TestCase
             ->type($email, 'email')
             ->type($password, 'password')
             ->type($passwordConfirmation == null ? $password : $passwordConfirmation, 'password_confirmation')
-            ->press('Register');
+            ->press(trans('general.action.register'));
     }
 
 }

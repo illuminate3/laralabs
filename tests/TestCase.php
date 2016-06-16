@@ -35,6 +35,17 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
+     * Enable unverified user login in configuration
+     *
+     * @param bool $isEnabled
+     */
+    protected function setUnverifiedLoginEnabled($isEnabled)
+    {
+        Config::set('auth.verification.allow_unverified_login', $isEnabled);
+        $this->assertEquals(config('auth.verification.allow_unverified_login'), $isEnabled);
+    }
+
+    /**
      * Get the UserRepository
      * @return \App\Repositories\Auth\UserRepositoryContract
      */
