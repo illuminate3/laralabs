@@ -4,12 +4,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend\Auth\Traits\AuthenticatesAndRegistersUsers;
 use App\Http\Controllers\Frontend\Auth\Traits\VerifiesUsers;
 use App\Models\Auth\User;
+use App\Repositories\Auth\UserRepositoryContract;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Validator;
 
 class AuthController extends Controller
 {
     use AuthenticatesAndRegistersUsers, ThrottlesLogins, VerifiesUsers;
+
+    /** @var UserRepositoryContract */
+    protected $userRepository;
 
     /** @var string Where to redirect users after login / registration. */
     protected $redirectTo = '/';
@@ -25,10 +29,13 @@ class AuthController extends Controller
 
     /**
      * Create a new authentication controller instance.
+     *
+     * @param \App\Repositories\Auth\UserRepositoryContract $userRepository
      */
-    public function __construct()
+    public function __construct(UserRepositoryContract $userRepository)
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -56,10 +63,6 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        return $this->userRepository->create($data);
     }
 }
