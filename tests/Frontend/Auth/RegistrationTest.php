@@ -21,16 +21,9 @@ class RegistrationTest extends TestCase
      */
     public function test_ShortPasswordNotAccepted()
     {
-        //--------------------------------------------------------
-        // 1.
+        $this->submitRegistrationForm('Test', 'test@example.com', '123');
 
         $this
-            ->visit(route('frontend.auth.register.form'))
-            ->type('Test', 'name')
-            ->type('test@example.com', 'email')
-            ->type('123', 'password')
-            ->type('123', 'password_confirmation')
-            ->press('Register')
             ->seePageIs('/register')
             ->see('The password must be at least');
 
@@ -51,25 +44,17 @@ class RegistrationTest extends TestCase
 
         $this->expectsEvents(\App\Events\Auth\UserCreatedEvent::class);
 
-        $this
-            ->visit(route('frontend.auth.register.form'))
-            ->type('Test', 'name')
-            ->type('test@example.com', 'email')
-            ->type('123123', 'password')
-            ->type('123123', 'password_confirmation')
-            ->press('Register');
-        
+        $this->submitRegistrationForm();
+
         //--------------------------------------------------------
         // Proper redirection & message
 
         $this
-            ->seePageIs('/')
+            ->seePageIs(route('frontend.home'))
             ->see(trans('auth.registration.needs_verification'));
 
         //--------------------------------------------------------
         // Event fired
-
-        $this->expectsEvents(UserRegistered::class);
 
         $user = $this->getUserRepository()->findByEmail('test@example.com');
 
@@ -102,19 +87,13 @@ class RegistrationTest extends TestCase
 
         $this->expectsEvents(\App\Events\Auth\UserCreatedEvent::class);
 
-        $this
-            ->visit(route('frontend.auth.register.form'))
-            ->type('Test', 'name')
-            ->type('test@example.com', 'email')
-            ->type('123123', 'password')
-            ->type('123123', 'password_confirmation')
-            ->press('Register');
+        $this->submitRegistrationForm();
 
         //--------------------------------------------------------
         // Proper redirection & message
 
         $this
-            ->seePageIs('/')
+            ->seePageIs(route('frontend.home'))
             ->see(trans('auth.registration.complete'));
 
         //--------------------------------------------------------
@@ -135,6 +114,29 @@ class RegistrationTest extends TestCase
         $this->assertEquals(
             'test@example.com', $user->email,
             'Email is properly set');
+    }
+
+    /**
+     * @param string      $name
+     * @param string      $email
+     * @param string      $password
+     * @param string|null $passwordConfirmation
+     *
+     * @return $this
+     */
+    protected function submitRegistrationForm(
+        $name = 'Test',
+        $email = 'test@example.com',
+        $password = 'password',
+        $passwordConfirmation = null)
+    {
+        return $this
+            ->visit(route('frontend.auth.register.form'))
+            ->type($name, 'name')
+            ->type($email, 'email')
+            ->type($password, 'password')
+            ->type($passwordConfirmation == null ? $password : $passwordConfirmation, 'password_confirmation')
+            ->press('Register');
     }
 
 }
