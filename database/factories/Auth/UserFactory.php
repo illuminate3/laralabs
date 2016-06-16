@@ -5,6 +5,18 @@ use Illuminate\Support\Str;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+$factory->defineAs(User::class, 'admin', function (Faker\Generator $faker)
+{
+    return [
+        'name'               => 'The Admin',
+        'email'              => 'admin@example.com',
+        'password'           => bcrypt('password'),
+        'remember_token'     => str_random(10),
+        'verified'           => true,
+        'verification_token' => null,
+    ];
+});
+
 $factory->define(User::class, function (Faker\Generator $faker)
 {
     return [
