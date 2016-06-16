@@ -3,7 +3,6 @@
 
 use Auth;
 use Illuminate\Http\Request;
-use UserVerification;
 
 trait RegistersUsers
 {
@@ -30,32 +29,18 @@ trait RegistersUsers
         // Create the user in DB
         $user = $this->create($request->all());
 
+        // Login if required
         $enableVerification = config('auth.verification.enable', true);
         $allowUnverifiedLogin = config('auth.verification.allow_unverified_login', false);
-
-        if ( !$enableVerification)
+        if ( !$enableVerification || $allowUnverifiedLogin)
         {
             Auth::guard($this->getGuard())->login($user);
-
-            // User is verified
-            $user->verified = true;
-            $user->save();
-
-            $request->session()->flash('status', trans('auth.registration.complete'));
         }
-        else
-        {
-            if ($allowUnverifiedLogin)
-            {
-                Auth::guard($this->getGuard())->login($user);
-            }
 
-            // Generate a verification token and send it to the user
-            UserVerification::generate($user);
-            UserVerification::send($user, trans('emails.verify-account.title'));
-
-            $request->session()->flash('status', trans('auth.registration.needs_verification'));
-        }
+        // Set status message
+        $request->session()->flash('status', $enableVerification
+            ? trans('auth.registration.complete')
+            : trans('auth.registration.needs_verification'));
 
         return redirect($this->redirectPath());
     }

@@ -22,4 +22,35 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    /**
+     * Enable verification in configuration
+     *
+     * @param bool $isEnabled
+     */
+    protected function setAccountVerificationEnabled($isEnabled)
+    {
+        Config::set('auth.verification.enabled', $isEnabled);
+        $this->assertEquals(config('auth.verification.enabled'), $isEnabled);
+    }
+
+    /**
+     * Get the UserRepository
+     * @return \App\Repositories\Auth\UserRepositoryContract
+     */
+    protected function getUserRepository()
+    {
+        return $this->app->make(\App\Repositories\Auth\UserRepositoryContract::class);
+    }
+
+    /**
+     * @return \Mockery\MockInterface
+     */
+    protected function getMockMailer()
+    {
+        $mock = \Mockery::mock($this->app['mailer']->getSwiftMailer());
+        $this->app['mailer']->setSwiftMailer($mock);
+
+        return $mock;
+    }
 }

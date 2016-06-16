@@ -46,4 +46,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'verification_token'
     ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'verified' => 'boolean',
+    ];
 }

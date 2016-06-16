@@ -14,7 +14,7 @@ Route::group([
 {
     $basePath = __DIR__ . '/Routes/Backend';
 
-    require_once($basePath . '/General.php');
+    require($basePath . '/General.php');
 
 });
 
@@ -31,8 +31,8 @@ Route::group([
 {
     $basePath = __DIR__ . '/Routes/Frontend';
 
-    require_once($basePath . '/General.php');
-    require_once($basePath . '/Auth.php');
+    require($basePath . '/General.php');
+    require($basePath . '/Auth.php');
 });
 
 /*

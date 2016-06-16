@@ -20,7 +20,7 @@ class VerificationTest extends TestCase
      */
     public function test_NewUserNotVerified_WhenVerificationEnabled_FromRepository()
     {
-        $this->setVerificationEnabled(true);
+        $this->setAccountVerificationEnabled(true);
 
         //--------------------------------------------------------
         // 1.
@@ -50,7 +50,7 @@ class VerificationTest extends TestCase
      */
     public function test_NewUserVerified_WhenVerificationDisabled_FromRepository()
     {
-        $this->setVerificationEnabled(false);
+        $this->setAccountVerificationEnabled(false);
 
         //--------------------------------------------------------
         // 1.
@@ -87,26 +87,6 @@ class VerificationTest extends TestCase
             'email'    => $email,
             'password' => $password,
         ];
-    }
-
-    /**
-     * Enable verification in configuration
-     *
-     * @param bool $isEnabled
-     */
-    private function setVerificationEnabled($isEnabled)
-    {
-        Config::set('auth.verification.enabled', $isEnabled);
-        $this->assertEquals(config('auth.verification.enabled'), $isEnabled);
-    }
-
-    /**
-     * Get the UserRepository
-     * @return \App\Repositories\Auth\UserRepositoryContract
-     */
-    private function getUserRepository()
-    {
-        return $this->app->make(\App\Repositories\Auth\UserRepositoryContract::class);
     }
 
 }

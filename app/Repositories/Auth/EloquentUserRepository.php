@@ -1,7 +1,8 @@
 <?php namespace App\Repositories\Auth;
 
+use App\Events\Auth\UserCreatedEvent;
 use App\Models\Auth\User;
-use UserVerification;
+use Event;
 
 /**
  * Class EloquentUserRepository
@@ -54,11 +55,7 @@ class EloquentUserRepository implements UserRepositoryContract
             'verified' => $isVerified,
         ]);
 
-        // If not already verified, and verification is enabled, generate a token
-        if ( !$isVerified)
-        {
-            UserVerification::generate($user);
-        }
+        Event::fire(new UserCreatedEvent($user));
 
         return $user;
     }
