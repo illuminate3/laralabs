@@ -38,14 +38,14 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param array $data     
+     * @param array $data
      * @param bool  $isVerified
      *
      * @return static
      */
     public function create(array $data, $isVerified = false)
     {
-        if (!config('auth.verification.enabled')) $isVerified = true;
+        if ( !config('auth.verification.enabled')) $isVerified = true;
 
         $user = User::create([
             'name'     => $data['name'],
@@ -55,7 +55,7 @@ class EloquentUserRepository implements UserRepositoryContract
         ]);
 
         // If not already verified, and verification is enabled, generate a token
-        if ( !$isVerified && config('auth.verification.enabled'))
+        if ( !$isVerified)
         {
             UserVerification::generate($user);
         }
