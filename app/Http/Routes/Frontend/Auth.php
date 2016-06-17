@@ -18,18 +18,18 @@ Route::group([
     {
         Route::get('/', [
             'as'   => 'form',
-            'uses' => 'AuthController@showLoginForm',
+            'uses' => 'LoginController@showLoginForm',
         ]);
 
         Route::post('/', [
             'as'   => 'submit',
-            'uses' => 'AuthController@login',
+            'uses' => 'LoginController@submitLoginForm',
         ]);
     });
 
     Route::get('logout', [
         'as'   => 'logout',
-        'uses' => 'AuthController@logout',
+        'uses' => 'LoginController@submitLogout',
     ]);
 
     /*
@@ -44,12 +44,12 @@ Route::group([
     {
         Route::get('/', [
             'as'   => 'form',
-            'uses' => 'AuthController@showRegistrationForm',
+            'uses' => 'RegistrationController@showRegistrationForm',
         ]);
 
         Route::post('/', [
             'as'   => 'submit',
-            'uses' => 'AuthController@register',
+            'uses' => 'RegistrationController@submitRegistrationForm',
         ]);
     });
 
@@ -63,19 +63,24 @@ Route::group([
         'as'     => 'reset.',
     ], function ()
     {
-        Route::get('/reset/{token?}', [
+        Route::get('/forgot', [
             'as'   => 'form',
-            'uses' => 'PasswordController@showResetForm',
+            'uses' => 'PasswordController@showForgotPasswordForm',
         ]);
 
         Route::post('/email', [
             'as'   => 'email',
-            'uses' => 'PasswordController@sendResetLinkEmail',
+            'uses' => 'PasswordController@submitForgotPasswordForm',
+        ]);
+
+        Route::get('/reset/{token}', [
+            'as'   => 'form',
+            'uses' => 'PasswordController@showResetPasswordForm',
         ]);
 
         Route::post('/reset', [
             'as'   => 'change',
-            'uses' => 'PasswordController@reset',
+            'uses' => 'PasswordController@submitResetPasswordForm',
         ]);
     });
 
@@ -89,14 +94,14 @@ Route::group([
         'as'     => 'verification.',
     ], function ()
     {
-        Route::get('/{token}', [
-            'as'   => 'form',
-            'uses' => 'AuthController@getVerification',
-        ]);
-
         Route::get('/error', [
             'as'   => 'error',
-            'uses' => 'AuthController@getVerificationError',
+            'uses' => 'VerificationController@showVerificationError',
+        ]);
+
+        Route::get('/{token?}', [
+            'as'   => 'form',
+            'uses' => 'VerificationController@submitVerification',
         ]);
     });
 

@@ -1,32 +1,24 @@
 <?php namespace App\Repositories\Auth;
 
+use App\Models\Auth\User;
+use Prettus\Repository\Contracts\RepositoryInterface;
+
 /**
  * Interface UserRepositoryContract
  *
  * @package App\Repositories\Auth\
  */
-interface UserRepositoryContract
+interface UserRepositoryContract extends RepositoryInterface
 {
-    /**
-     * @param int $id
-     *
-     * @return mixed
-     */
-    public function find($id);
 
     /**
-     * @param $email
+     * Update a user's password
      *
-     * @return mixed
-     */
-    public function findByEmail($email);
-
-    /**
-     * @param array $data
-     * @param bool  $isVerified
+     * @param int    $id
+     * @param string $password
      *
-     * @return mixed
+     * @return User
      */
-    public function create(array $data, $isVerified = false);
+    function updatePassword($id, $password);
 
 }

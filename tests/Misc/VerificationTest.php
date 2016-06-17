@@ -38,7 +38,7 @@ class VerificationTest extends TestCase
         //--------------------------------------------------------
         // 2.
 
-        $user = $this->users->create($this->defaultUserData('test2@example.com'), true);
+        $user = $this->users->create($this->defaultUserData('test2@example.com', 'password', 'Test', true));
 
         $this->assertTrue(
             $user->verified,
@@ -64,7 +64,7 @@ class VerificationTest extends TestCase
         //--------------------------------------------------------
         // 2.
 
-        $user = $this->users->create($this->defaultUserData('test2@example.com'), false);
+        $user = $this->users->create($this->defaultUserData('test2@example.com', 'password', 'Test', false));
 
         $this->assertTrue(
             $user->verified,
@@ -77,15 +77,21 @@ class VerificationTest extends TestCase
      * @param string $email
      * @param string $password
      * @param string $name
+     * @param bool   $verified
      *
      * @return array
      */
-    private function defaultUserData($email = 'test@example.com', $password = 'password', $name = 'Test')
+    private function defaultUserData(
+        $email = 'test@example.com', 
+        $password = 'password', 
+        $name = 'Test',
+        $verified = false)
     {
         return [
             'name'     => $name,
             'email'    => $email,
             'password' => $password,
+            'verified' => $verified,
         ];
     }
 

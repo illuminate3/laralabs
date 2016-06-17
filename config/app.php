@@ -167,6 +167,9 @@ return [
         /* Authentication-related */
         Jrean\UserVerification\UserVerificationServiceProvider::class,
 
+        /* Model and database-related */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

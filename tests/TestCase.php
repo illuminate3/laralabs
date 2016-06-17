@@ -23,6 +23,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         return $app;
     }
 
+    public function tearDown() {
+        Mockery::close();
+    }
+
     /**
      * Enable verification in configuration
      *

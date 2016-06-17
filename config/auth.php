@@ -4,6 +4,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Authentication Tables
+    |--------------------------------------------------------------------------
+    |
+    */
+    'tables' => [
+        'users' => 'users',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Authentication Defaults
     |--------------------------------------------------------------------------
     |
@@ -96,12 +106,27 @@ return [
     */
 
     'passwords' => [
-        'users' => [
+        'users'                     => [
             'provider' => 'users',
             'email'    => 'emails.auth.forgot-password',
             'table'    => 'password_resets',
             'expire'   => 60,
         ],
+        'strength_validation_rules' => 'min:6',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User account registration
+    |--------------------------------------------------------------------------
+    |
+    | Configure how registration should behave
+    |
+    */
+
+    'registration' => [
+        'enabled'                  => true,
+        'login_after_registration' => false,
     ],
 
     /*

@@ -1,8 +1,9 @@
 <?php
 
+use App\Events\Auth\UserAuthenticatedEvent;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class LoginTest extends TestCase
+class LoginControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -33,7 +34,7 @@ class LoginTest extends TestCase
         $this->setAccountVerificationEnabled(false);
 
         $this->withoutEvents();
-        $this->users->create($this->defaultUserData(), true);
+        $this->users->create($this->defaultUserData());
 
         $this->submitLoginForm('test@example.com', 'wrong-password');
 
@@ -61,6 +62,18 @@ class LoginTest extends TestCase
     }
 
     /**
+     * Ensure we send an event on login
+     */
+    public function test_UserAuthenticatedEvent_IsSentOnSuccessfulLogin()
+    {
+        $this->users->create(array_merge($this->defaultUserData(), ['verified' => true]));
+
+        $this->expectsEvents([UserAuthenticatedEvent::class]);
+
+        $this->submitLoginForm();
+    }
+
+    /**
      * When configuration says that verification is enabled BUT unverified login is allowed, allow unverified users to
      * log in
      */
@@ -83,15 +96,17 @@ class LoginTest extends TestCase
      * @param string $email
      * @param string $password
      * @param string $name
+     * @param bool   $verified
      *
      * @return array
      */
-    private function defaultUserData($email = 'test@example.com', $password = 'password', $name = 'Test')
+    private function defaultUserData($email = 'test@example.com', $password = 'password', $name = 'Test', $verified=false)
     {
         return [
             'name'     => $name,
             'email'    => $email,
             'password' => $password,
+            'verified' => $verified,
         ];
     }
 

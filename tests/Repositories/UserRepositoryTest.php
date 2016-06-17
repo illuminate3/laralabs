@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Prettus\Repository\Events\RepositoryEntityCreated;
 
 class UserRepositoryTest extends TestCase
 {
@@ -20,9 +21,27 @@ class UserRepositoryTest extends TestCase
      */
     public function test_UserCreatedEventIsFired_OnCreateUser()
     {
-        $this->expectsEvents(\App\Events\Auth\UserCreatedEvent::class);
+        Event::shouldReceive('fire')
+            ->once()
+            ->withArgs([
+                \Mockery::type(RepositoryEntityCreated::class),
+                \Mockery::any(),
+                \Mockery::any(),
+            ]);
 
         $this->users->create($this->defaultUserData());
+    }
+
+    /**
+     *
+     */
+    public function test_UserPasswordIsEncryptedProperly()
+    {
+        $this->users->create($this->defaultUserData());
+
+        $user = $this->users->findByField('email', 'test@example.com')->first();
+
+        $this->assertTrue(Hash::check('password', $user->password));
     }
 
     /**

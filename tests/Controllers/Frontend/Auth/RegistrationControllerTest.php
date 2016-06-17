@@ -1,8 +1,10 @@
 <?php
 
+use App\Events\Auth\UserRegisteredEvent;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Prettus\Repository\Events\RepositoryEntityCreated;
 
-class RegistrationTest extends TestCase
+class RegistrationControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -19,17 +21,53 @@ class RegistrationTest extends TestCase
     /**
      *
      */
-    public function test_ShortPasswordNotAccepted()
+    public function test_EventsAreSent_OnRegistration()
     {
-        $this->submitRegistrationForm('Test', 'test@example.com', '123');
+        $this->expectsEvents([RepositoryEntityCreated::class, UserRegisteredEvent::class]);
+        $this->submitRegistrationForm();
+    }
+
+    /**
+     *
+     */
+    public function test_CannotRegisterExistingAddress()
+    {
+        $this->submitRegistrationForm();
+        $this->submitRegistrationForm('Test', 'test@example.com');
+
+        $this
+            ->seePageIs('/register')
+            ->see('The email has already been taken');
+
+        $this->assertEquals(
+            1,
+            $this->getUserRepository()->findByField('email', 'test@example.com')->count(),
+            "There are more than 1 user with that email address");
+    }
+
+    /**
+     * @dataProvider insecurePasswordProvider
+     *
+     * @param string $password The password to test
+     */
+    public function test_CannotRegisterInsecurePassword($password)
+    {
+        $this->submitRegistrationForm('Test', 'test@example.com', $password);
 
         $this
             ->seePageIs('/register')
             ->see('The password must be at least');
 
-        $this->assertFalse(
-            $this->getUserRepository()->findByEmail('test@example.com'),
+        $this->assertNull(
+            $this->getUserRepository()->findByField('email', 'test@example.com')->first(),
             "User has not been created");
+    }
+
+    public function insecurePasswordProvider()
+    {
+        return [
+            'too short' => ['12345']
+        ];
     }
 
     /**
@@ -38,11 +76,6 @@ class RegistrationTest extends TestCase
     public function test_UserProperlyCreated_WithVerificationEnabled()
     {
         $this->setAccountVerificationEnabled(true);
-
-        //--------------------------------------------------------
-        // We expect the UserCreatedEvent
-
-        $this->expectsEvents(\App\Events\Auth\UserCreatedEvent::class);
 
         $this->submitRegistrationForm();
 
@@ -54,9 +87,9 @@ class RegistrationTest extends TestCase
             ->see(trans('auth.registration.needs_verification'));
 
         //--------------------------------------------------------
-        // Event fired
+        // User properties
 
-        $user = $this->getUserRepository()->findByEmail('test@example.com');
+        $user = $this->getUserRepository()->findByField('email', 'test@example.com')->first();
 
         $this->assertNotNull(
             $user,
@@ -71,7 +104,6 @@ class RegistrationTest extends TestCase
         $this->assertEquals(
             'test@example.com', $user->email,
             'Email is properly set');
-
     }
 
     /**
@@ -81,11 +113,6 @@ class RegistrationTest extends TestCase
     {
         $this->setAccountVerificationEnabled(false);
         $this->app['config']->set('auth.verification.enabled', false);
-
-        //--------------------------------------------------------
-        // We expect the UserCreatedEvent
-
-        $this->expectsEvents(\App\Events\Auth\UserCreatedEvent::class);
 
         $this->submitRegistrationForm();
 
@@ -99,7 +126,7 @@ class RegistrationTest extends TestCase
         //--------------------------------------------------------
         // Proper user creation
 
-        $user = $this->getUserRepository()->findByEmail('test@example.com');
+        $user = $this->getUserRepository()->findByField('email', 'test@example.com')->first();
 
         $this->assertNotNull(
             $user,

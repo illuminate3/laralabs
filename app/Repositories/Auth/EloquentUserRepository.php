@@ -1,62 +1,93 @@
 <?php namespace App\Repositories\Auth;
 
-use App\Events\Auth\UserCreatedEvent;
 use App\Models\Auth\User;
-use Event;
+use Illuminate\Support\Str;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class EloquentUserRepository
  *
  * @package App\Repositories\Frontend\User
  */
-class EloquentUserRepository implements UserRepositoryContract
+class EloquentUserRepository extends BaseRepository implements UserRepositoryContract
 {
     /**
-     * @param int $id
+     * Specify Model class name
+     *
+     * @return string
+     */
+    public function model()
+    {
+        return User::class;
+    }
+
+    /**
+     * Update a user's password
+     *
+     * @param int    $id
+     * @param string $password
+     *
+     * @return User
+     */
+    public function updatePassword($id, $password)
+    {
+        return $this->update([
+            'password'       => $password,
+            'remember_token' => Str::random(60),
+        ], $id);
+    }
+
+    /**
+     * @param array $attributes
+     * @param       $id
      *
      * @return mixed
      */
-    public function find($id)
+    public function update(array $attributes, $id)
     {
-        return User::findOrFail($id);
+        return parent::update($this->transformAttributes($attributes), $id);
     }
 
     /**
-     * @param $email
+     * @param array $attributes
+     * @param array $values
      *
-     * @return User|bool
+     * @return mixed
      */
-    public function findByEmail($email)
+    public function updateOrCreate(array $attributes, array $values = [])
     {
-        $user = User::where('email', $email)->first();
+        return parent::updateOrCreate($this->transformAttributes($attributes), $values);
+    }
 
-        if ($user instanceof User)
+    /**
+     * @param array $attributes
+     *
+     * @return mixed
+     */
+    public function create(array $attributes)
+    {
+        return parent::create($this->transformAttributes($attributes));
+    }
+
+    /**
+     * Encrypt the password before it is saved on the model
+     *
+     * @param array $attributes
+     *
+     * @return array
+     */
+    private function transformAttributes($attributes)
+    {
+        if (isset($attributes['password']))
         {
-            return $user;
+            $attributes['password'] = bcrypt($attributes['password']);
         }
 
-        return false;
-    }
+        if (isset($attributes['verified']) && !config('auth.verification.enabled'))
+        {
+            $attributes['verified'] = true;
+        }
 
-    /**
-     * @param array $data
-     * @param bool  $isVerified
-     *
-     * @return static
-     */
-    public function create(array $data, $isVerified = false)
-    {
-        if ( !config('auth.verification.enabled')) $isVerified = true;
-
-        $user = User::create([
-            'name'     => $data['name'],
-            'email'    => $data['email'],
-            'password' => bcrypt($data['password']),
-            'verified' => $isVerified,
-        ]);
-
-        Event::fire(new UserCreatedEvent($user));
-
-        return $user;
+        return $attributes;
     }
 }

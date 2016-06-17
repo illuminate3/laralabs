@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Events\Auth\UserCreatedEvent;
 use App\Listeners\Auth\UserVerificationListener;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Prettus\Repository\Events\RepositoryEntityCreated;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        UserCreatedEvent::class => [
+        RepositoryEntityCreated::class => [
             UserVerificationListener::class,
         ],
     ];
