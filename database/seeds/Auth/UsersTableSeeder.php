@@ -13,6 +13,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         factory(User::class, 'admin', 1)->create();
+        factory(User::class, 'verified', 1)->create();
+        factory(User::class, 'unverified', 1)->create();
         factory(User::class, 50)->create();
     }
 }
