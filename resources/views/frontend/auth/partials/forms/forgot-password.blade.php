@@ -1,5 +1,5 @@
 {!! BootForm::open()
-        ->action(route('frontend.auth.reset.email'))
+        ->action(route('frontend.auth.password.forgot.submit'))
         ->post() !!}
 
 {!! BootForm::email(trans('general.field.email'), 'email')  !!}

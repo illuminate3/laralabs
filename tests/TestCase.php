@@ -57,15 +57,4 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     {
         return $this->app->make(\App\Repositories\Auth\UserRepositoryContract::class);
     }
-
-    /**
-     * @return \Mockery\MockInterface
-     */
-    protected function getMockMailer()
-    {
-        $mock = \Mockery::mock($this->app['mailer']->getSwiftMailer());
-        $this->app['mailer']->setSwiftMailer($mock);
-
-        return $mock;
-    }
 }

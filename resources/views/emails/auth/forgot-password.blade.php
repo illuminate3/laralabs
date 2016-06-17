@@ -4,6 +4,6 @@
 
 @section('email.content')
 {!! trans('emails.auth.forgot-password.content', [
-    'url' => route('frontend.auth.reset.form', ['token' => $token]) . '?email=' . urlencode($user->getEmailForPasswordReset())
+    'url' => route('frontend.auth.password.reset.form', ['token' => $token]) . '?email=' . urlencode($user->getEmailForPasswordReset())
 ]) !!}
 @endsection

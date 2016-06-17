@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        {!! BootForm::password(trans('general.field.password'), 'password')  !!}
+        {!! BootForm::password(trans('general.field.password'), 'password')->helpBlock(trans('general.field.password_help'))  !!}
     </div>
     <div class="col-md-6">
         {!! BootForm::password(trans('general.field.password_confirmation'), 'password_confirmation')  !!}

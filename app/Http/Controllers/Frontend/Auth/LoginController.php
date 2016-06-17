@@ -33,7 +33,7 @@ class LoginController extends BaseAuthController
     public function __construct(UserRepositoryContract $userRepository)
     {
         parent::__construct($userRepository);
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'submitLogout']);
     }
 
     /**

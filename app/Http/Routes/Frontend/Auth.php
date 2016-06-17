@@ -60,28 +60,40 @@ Route::group([
     */
     Route::group([
         'prefix' => 'password',
-        'as'     => 'reset.',
+        'as'     => 'password.',
     ], function ()
     {
-        Route::get('/forgot', [
-            'as'   => 'form',
-            'uses' => 'PasswordController@showForgotPasswordForm',
-        ]);
+        Route::group([
+            'prefix' => 'forgot',
+            'as'     => 'forgot.',
+        ], function ()
+        {
+            Route::get('/', [
+                'as'   => 'form',
+                'uses' => 'PasswordController@showForgotPasswordForm',
+            ]);
 
-        Route::post('/email', [
-            'as'   => 'email',
-            'uses' => 'PasswordController@submitForgotPasswordForm',
-        ]);
+            Route::post('/', [
+                'as'   => 'submit',
+                'uses' => 'PasswordController@submitForgotPasswordForm',
+            ]);
+        });
 
-        Route::get('/reset/{token}', [
-            'as'   => 'form',
-            'uses' => 'PasswordController@showResetPasswordForm',
-        ]);
+        Route::group([
+            'prefix' => 'reset',
+            'as'     => 'reset.',
+        ], function ()
+        {
+            Route::get('/{token}', [
+                'as'   => 'form',
+                'uses' => 'PasswordController@showResetPasswordForm',
+            ]);
 
-        Route::post('/reset', [
-            'as'   => 'change',
-            'uses' => 'PasswordController@submitResetPasswordForm',
-        ]);
+            Route::post('/', [
+                'as'   => 'submit',
+                'uses' => 'PasswordController@submitResetPasswordForm',
+            ]);
+        });
     });
 
     /*

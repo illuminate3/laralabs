@@ -15,6 +15,8 @@ return [
         'password_confirmation' => 'Confirm password',
         'email'                 => 'Email',
         'password'              => 'Password',
+        'password_help'         => 'Must contain at least 6 characters',
+        'new_password'          => 'New password',
         'remember_me'           => 'Stay logged in',
     ],
 

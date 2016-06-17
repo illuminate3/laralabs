@@ -2,7 +2,9 @@
 
 use App\Http\Requests\Auth\ForgotPasswordRequest;
 use App\Http\Requests\Auth\ResetPasswordRequest;
+use App\Models\Auth\User;
 use App\Repositories\Auth\UserRepositoryContract;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Password;
@@ -16,6 +18,7 @@ class PasswordController extends BaseAuthController
     const FORGOT_PASSWORD_VIEW = 'frontend.auth.forgot-password';
     const RESET_PASSWORD_VIEW = 'frontend.auth.reset-password';
 
+    const FORGOT_PASSWORD_SUCCESS_REDIRECT_ROUTE = 'frontend.auth.login.form';
     const RESET_PASSWORD_SUCCESS_REDIRECT_ROUTE = 'frontend.home';
 
     /**
@@ -76,7 +79,7 @@ class PasswordController extends BaseAuthController
      *
      * @return \Illuminate\Http\Response
      */
-    public function showResetForm(Request $request, $token)
+    public function showResetPasswordForm(Request $request, $token)
     {
         $email = $request->input('email');
 
@@ -117,8 +120,8 @@ class PasswordController extends BaseAuthController
     /**
      * Reset the given user's password.
      *
-     * @param  \Illuminate\Contracts\Auth\CanResetPassword $user
-     * @param  string                                      $password
+     * @param  User   $user
+     * @param  string $password
      *
      * @return void
      */
@@ -163,7 +166,7 @@ class PasswordController extends BaseAuthController
      */
     protected function handleSendResetLinkEmailSuccess($response)
     {
-        return redirect()->back()->with('status', trans($response));
+        return redirect()->route(self::FORGOT_PASSWORD_SUCCESS_REDIRECT_ROUTE)->with('status', trans($response));
     }
 
     /**

@@ -29,6 +29,23 @@ class LoginControllerTest extends TestCase
     /**
      *
      */
+    public function test_Logout()
+    {
+        $user = $this->users->create(array_merge($this->defaultUserData(), ['verified' => true]));
+
+        $this->be($user);
+        $this->assertFalse(Auth::guest(), 'We are not logged in before our logout test');
+
+        $this
+            ->visit(route('frontend.auth.logout'))
+            ->seePageIs(route('frontend.home'));
+
+        $this->assertTrue(Auth::guest(), 'User not disconnected properly');
+    }
+
+    /**
+     *
+     */
     public function test_InvalidLoginRejected()
     {
         $this->setAccountVerificationEnabled(false);
@@ -100,7 +117,8 @@ class LoginControllerTest extends TestCase
      *
      * @return array
      */
-    private function defaultUserData($email = 'test@example.com', $password = 'password', $name = 'Test', $verified=false)
+    private function defaultUserData($email = 'test@example.com', $password = 'password', $name = 'Test',
+        $verified = false)
     {
         return [
             'name'     => $name,

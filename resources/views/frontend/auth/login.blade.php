@@ -7,7 +7,7 @@
         'formPartial' => 'frontend.auth.partials.forms.login',
         'footerLinks' => [
             [ 'url' => route('frontend.auth.register.form'), 'label' => trans('general.action.register') ],
-            [ 'url' => route('frontend.auth.reset.form'), 'label' => trans('general.action.lost_password') ],
+            [ 'url' => route('frontend.auth.password.forgot.form'), 'label' => trans('general.action.lost_password') ],
         ],
     ])
 @endsection
