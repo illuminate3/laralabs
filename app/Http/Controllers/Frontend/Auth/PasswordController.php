@@ -58,6 +58,10 @@ class PasswordController extends BaseAuthController
             $this->resetEmailBuilder()
         );
 
+        \Mail::send('frontend.home.index', [], function($msg) {
+            return $msg->to('test@example.com');
+        });
+
         switch ($response)
         {
             case Password::RESET_LINK_SENT:

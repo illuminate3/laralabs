@@ -1,5 +1,7 @@
 <?php
 
+use App\TestSupport\TestsEmails;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     /**
@@ -21,6 +23,22 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
+    }
+
+    /**
+     * Boot the testing helper traits.
+     *
+     * @return void
+     */
+    protected function setUpTraits()
+    {
+        parent::setUpTraits();
+
+        $uses = array_flip(class_uses_recursive(static::class));
+
+        if (isset($uses[TestsEmails::class])) {
+            $this->setUpMailTracking();
+        }
     }
 
     public function tearDown() {

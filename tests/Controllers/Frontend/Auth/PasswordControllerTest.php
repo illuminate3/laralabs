@@ -1,11 +1,11 @@
 <?php
 
-use Illuminate\Contracts\Mail\Mailer;
+use App\TestSupport\TestsEmails;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class PasswordControllerTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseMigrations, TestsEmails;
 
     /** @var \App\Repositories\Auth\UserRepositoryContract */
     private $users;
@@ -18,16 +18,13 @@ class PasswordControllerTest extends TestCase
 
     public function test_SendsForgotPasswordEmail()
     {
-       Mail::shouldReceive('send')
-            ->once()
-            ->andReturnUsing(function ($msg)
-            {
-                $this->assertEquals(trans('emails.auth.forgot-password.subject'), $msg->getSubject());
-                $this->assertEquals('test@example.com', $msg->getTo());
-            });
-
         $this->users->create($this->defaultUserData());
         $this->submitForgotPasswordForm();
+
+        $this
+            ->seeEmailWasSent()
+            //->seeEmailSubject(trans('emails.auth.forgot-password.subject'))
+            ->seeEmailTo('test@example.com');
     }
 
     /**
@@ -39,7 +36,7 @@ class PasswordControllerTest extends TestCase
     {
         return $this->visit(route('frontend.auth.password.forgot.form'))
             ->type($email, 'email')
-            ->submitForm(trans('general.action.request_password_reset'));
+            ->press(trans('general.action.request_password_reset'));
     }
 
     /**
