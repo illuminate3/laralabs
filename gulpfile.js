@@ -94,7 +94,7 @@ elixir(function (mix) {
                 // Admin LTE + bundled Bootstrap
                 '../../../bower_components/admin-lte/bootstrap/css/bootstrap.css',
                 '../../../bower_components/admin-lte/dist/css/AdminLTE.css',
-                '../../../bower_components/admin-lte/dist/css/skins/skin-green.css',
+                '../../../bower_components/admin-lte/dist/css/skins/skin-blue.css',
 
                 // App
                 'tmp/backend/app-sass.css'

@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 {{-- If you change the skin color, change it in gulp too! --}}
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 
 <!-- Page wrapper -->
 <div class="wrapper">

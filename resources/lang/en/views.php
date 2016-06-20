@@ -8,6 +8,9 @@ return [
     ],
 
     'backend' => [
+        'general' => [
+            'toggle_nav' => 'Toggle navigation',
+        ],
         'dashboard' => [
             'title' => 'Dashboard',
         ],
