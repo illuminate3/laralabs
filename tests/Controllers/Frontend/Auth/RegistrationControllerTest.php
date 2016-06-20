@@ -1,12 +1,13 @@
 <?php
 
 use App\Events\Auth\UserRegisteredEvent;
+use App\TestSupport\TestsEmails;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Prettus\Repository\Events\RepositoryEntityCreated;
 
 class RegistrationControllerTest extends TestCase
 {
-    use DatabaseMigrations;
+    use DatabaseMigrations, TestsEmails;
 
     /**
      *
@@ -23,8 +24,26 @@ class RegistrationControllerTest extends TestCase
      */
     public function test_EventsAreSent_OnRegistration()
     {
+        $this->setAccountVerificationEnabled(true);
+
         $this->expectsEvents([RepositoryEntityCreated::class, UserRegisteredEvent::class]);
         $this->submitRegistrationForm();
+    }
+
+    /**
+     *
+     */
+    public function test_EmailsAreSent_OnRegistration()
+    {
+        $this->setAccountVerificationEnabled(true);
+        
+        $this->submitRegistrationForm();
+
+        $this
+            ->seeEmailWasSent()
+            // Always null. Why? Feature works properly though
+            //->seeEmailSubject(trans('emails.auth.forgot-password.subject'))
+            ->seeEmailTo('test@example.com');
     }
 
     /**

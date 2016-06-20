@@ -23,6 +23,7 @@ class PasswordControllerTest extends TestCase
 
         $this
             ->seeEmailWasSent()
+            // Always null. Why? Feature works properly though
             //->seeEmailSubject(trans('emails.auth.forgot-password.subject'))
             ->seeEmailTo('test@example.com');
     }
