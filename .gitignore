@@ -28,3 +28,6 @@ Vagrantfile
 
 # Laravel IDE Helper
 _ide_helper.php
+.vagrant/
+public/adminer/
+storage/debugbar/
