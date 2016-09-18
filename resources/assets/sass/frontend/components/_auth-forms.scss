@@ -1,0 +1,21 @@
+.auth-form {
+  background-color: transparent;
+
+  .panel-body {
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  .panel-footer {
+    background: rgba(255, 255, 255, 0.75);
+    border-top: rgba(0,0,0,0.1) solid 1px
+  }
+
+  .auth-logo {
+    margin-bottom: $panel-body-padding;
+  }
+
+  .auth-submit {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}

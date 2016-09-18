@@ -1,0 +1,33 @@
+# Dependencies from NPM, Composer, etc.
+/vendor
+/node_modules
+/bower_components
+
+# Temporary or built assets
+/resources/assets/tmp
+/public/build
+/public/assets/fonts/font-awesome
+
+# App storage
+/public/storage
+
+# Environment & configuration files
+.env
+deploy.json
+
+# IDE files
+/.idea
+
+# Package development
+/packages
+
+# Homestead server
+Homestead.yaml
+Homestead.json
+Vagrantfile
+
+# Laravel IDE Helper
+_ide_helper.php
+.vagrant/
+public/adminer/
+storage/debugbar/

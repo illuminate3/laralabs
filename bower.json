@@ -1,0 +1,25 @@
+{
+  "name": "laralabs",
+  "description": "Laravel starter project",
+  "main": "",
+  "authors": [
+    "Vincent Mimoun-Prat <vpratfr@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "admin-lte": "^2.3.3",
+    "bootswatch": "^3.3.6",
+    "bootstrap-sass": "^3.3.6",
+    "components-font-awesome": "^4.6.3"
+  }
+}

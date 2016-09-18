@@ -1,0 +1,17 @@
+/* TODO In IE 11 this is not vertically centered */
+
+//noinspection CssOverwrittenProperties
+.vertical-center {
+  margin-top: $padding-large-vertical;
+  display: block;
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 0;
+
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+  }
+}
